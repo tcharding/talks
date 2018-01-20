@@ -1,0 +1,27 @@
+Finding something to work on is a problem faced by all kernel newbies. The
+internet abounds with information on creating your first patch, someone (*cough*
+me) even blogs, and presents, on doing your first patch set. But one patch does
+not a kernel developer make, nor one patch set.
+
+This talk is aimed at developers wishing to get started working on the kernel
+but unable to find things to work on. You will hopefully walk away with
+increased enthusiasm and confidence that you can find something interesting and
+tractable to work on within the kernel.
+
+We will discuss the idea that barriers to kernel development are primarily
+social not technical. You can expect some suggestions on how to manoeuvre within
+the kernel development process and some tips for maximizing your chances of
+success. Their will be a brief discussion on motivation - nothing hard can be
+achieved without the motivation to do so. 
+
+You can hope to learn how to find, and interact with, other more experienced
+kernel developers and how that can assist you in finding the solution that works
+for you.
+
+You can _however_ also hope to gain some concrete technical suggestions for
+getting started with kernel development and finding things to work on.
+
+Tobin is a hobbyist kernel developer. Whilst achieving a very small amount of
+success he has experienced many obstacles that can be lumped together under the
+problem of 'finding something to work on'. It is his hope that you can gain from
+this and find yourself happily hacking away on interesting kernel problems.

@@ -3,6 +3,24 @@ Intro to Kernel Hacking - finding things to work on
 
 So you want to be a kernel hacker but you don't know where to start ...
 
+Who am I and why am I doing this talk
+-------------------------------------
+
+- I'm just some guy from someplace who likes hacking on the kernel. I'm not being
+  paid to be here, my opinions are my own.
+
+- I have less than a year of full time kernel dev under my belt.
+
+- During that year I hit a wall and was stuck with nothing [kernel] to do for 2
+  months.
+
+This talk is targeted at wannabe kernel hackers, hopefully some of whom have a
+couple of patches mainlined already.
+
+The aim of this talk is to provide motivation/guidance to the target audience
+and also to get feed back from those more experienced to help the target
+audience (and myself ;)
+
 Motivation
 ----------
 
@@ -20,7 +38,7 @@ So, why do you want to do kernel development?
    part of a year (full time) before you are _really_ doing anything useful.
 
 Some reasons you might _want_ to do kernel development:
- - It's _cool_, you can use email.
+ - It's _cool_, we still use email.
  - If you are the sort of person who likes programming, systems programming,
    systems programming in C, open source systems programming in C ...
  - Most kernel developers are polite, well mannered, and extremely generous
@@ -67,6 +85,15 @@ Learn OS theory (and Linux in particular):
 Finding Things to Work On
 -------------------------
 
+Good news:
+ - There is unlimited amounts of work to do in the kernel.
+ - The kernel community is very appreciative and welcoming of any _beneficial_
+   help.
+
+Guidelines:
+ - Don't break anything.
+ - Be exceedingly respectful of other peoples time.
+
 Heuristics:
  - Work on what interests you.
  - Focus on interesting _tractable_ problems.
@@ -78,6 +105,9 @@ One method of progression:
  - Get some real hardware and write a driver
    - Pick hardware with a driver currently in staging.
    - Pick hardware that has a similar driver in tree.
+
+Please do not patch any kernel directory outside of staging until you have a
+_lot_ of patches merged (IMO at least 100).
 
 then ...
 
@@ -103,11 +133,12 @@ But hang on!
 
 Giving work to newbies takes effort too
  - It takes time to explain it.
+ - Reviewing patches takes time, especially newbie patches.
  - They have a nasty habit of pestering you when they either can't do it or
    they do it wrong.
 
-Get some people skills! You can convince hackers to spend some of their time
-on you, they benefit because:
+Get some people skills! If you can convince a kernel hacker to spend some of
+their time on you, they benefit because:
  - It's nice when things that you want done get done by other people.
  - It's nice when people respect you, asking someones guidance is a sign of respect.
  - You learn things by teaching, hackers tend to like learning things.
@@ -129,7 +160,7 @@ Talk to real kernel developers
  - Go to conferences.
  - Lurk on the mailing lists (kernel newbies and driver dev list).
 
-If anyone mentions anything that feel you can do or you are interested in
+If anyone mentions anything that you feel you can do or you are interested in
 researching then do it. This is a gift economy, try to give without taking. Do
 stuff that helps others while demanding as little as possible of them in return.
 
@@ -144,14 +175,16 @@ Be patient, while at first it seems impossible to find something to do, very
 soon you will be swamped in tasks. There is unlimited amounts of work to do and
 no rush, take your time, do what you do meticulously.
 
-Expect that your changes will not get in, or if they do, not for a good
+Expect that your changes will not get accepted, or if they do, not for a good
 while. You may have more success if you separate your patches from your ego. Or
 follow the concept of working not for the fruit of your labour but for the
 labour itself.
 
-Finally, when you wake up one morning and a patch set you put in has 20 response
+Finally, when you wake up one morning and a patch set you put in has 20 responses
 to it or the first time you get an email from <insert kernel god here>, it will
 all be worth it. Money can't buy that feeling.
 
 Some of the best programmers in the world work on the kernel, and a bunch of
-them are very entertaining to work with.
+them are very pleasant to work with.
+
+Enjoy yourself.

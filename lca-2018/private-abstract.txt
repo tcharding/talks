@@ -1,0 +1,18 @@
+Tobin C. Harding is a self taught hobbyist kernel developer. He has been working
+on the Linux kernel full time since February 2017. During that time he took a
+forced two month break because he could not find anything engaging to work on.
+It is from the experience of this year and through the resolution of this
+problem that the ideas for this presentation were born. 
+
+Tobin recently implemented, and became the maintainer for, the
+leaking_addresses.pl script merged into the mainline for v4.14
+
+Currently, he spends his time working on the KSPP (Kernel Self Protection
+Project). Prior to this his work was focused on staging drivers.
+
+In September of this year he presented a tutorial at the Open Source Summit
+North America titled 'Hacking Device Drivers - How to Get into Kernel
+Development'
+
+https://ossna2017.sched.com/event/BCsV/tutorial-hacking-device-drivers-how-to-get-into-kernel-development-tobin-harding
+
