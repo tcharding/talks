@@ -114,6 +114,25 @@ As well as conditionally compiling you can branch using `cfg!` macro
 
 ---
 
+## Overloading the word 'test'
+
+```rust
+#[cfg(test)]
+mod tests {
+
+    #[test]
+    fn it_works() {
+        // test code
+    }
+}
+```
+
+- `test` is a configuration option set by cargo
+- module name is `tests` by convention
+- `#[test]` is an attribute
+
+---
+
 ## More about features
 
 - Remember `feature` is not special other than it is set by cargo
