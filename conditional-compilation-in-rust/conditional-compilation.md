@@ -80,7 +80,7 @@ Configuration options can be called anything. The can be set by:
 - `cargo test` sets the `test` config option
 - `cargo --features=foo` sets the `feature = "foo"` config option
 - `RUSTFLAGS='--cfg=bar' cargo check` sets the `bar` config option
-- `rustc --cfg=foo` sets the `foo** config option
+- `rustc --cfg=foo` sets the `foo` config option
 
 ---
 
