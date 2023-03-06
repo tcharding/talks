@@ -11,10 +11,17 @@ use std::fmt;
 use mutagen::mutate;
 
 /// A signed 32 bit integer type.
+///
+/// `Num` is within the range [-2^31, 2^31 - 1]
 pub struct Num(i32);
 
 impl Num {
     /// Constructs a new `Num` type from a signed integer.
+    ///
+    /// # Errors
+    ///
+    /// An unsigned `Num` has a maximum value of 2^31 - 1, we error if `x` is greater than
+    /// the maximum value.
     ///
     /// # Examples
     /// ```
@@ -141,5 +148,17 @@ mod tests {
         let n = Num::from_unsigned(x).expect("i32::MAX is within range");
         let got = n.to_unsigned().expect("i32::MAX is positive");
         assert_eq!(x, got)
+    }
+
+    #[test]
+    fn from_unsigned_overflow_error() {
+        // This is bigger than maximum allowed value of a `Num`.
+        let x = u32::MAX;
+
+        match Num::from_unsigned(x) {
+            Ok(_) => panic!("should have error for u32::MAX"),
+            Err(Error::Overflow(got)) => assert_eq!(got, x),
+            Err(_) => panic!("unexpected error,")
+        }
     }
 }
