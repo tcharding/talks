@@ -12,11 +12,37 @@ pub struct Num(i32);
 
 impl Num {
     /// Constructs a new `Num` type from a signed integer.
+    ///
+    /// # Examples
+    /// ```
+    /// use num::Num;
+    /// let x = -10;
+    /// // Roundtrips with `to_signed`.
+    /// assert_eq!(Num::from_signed(x).to_signed(), x)
+    /// ```
     pub fn from_signed(x: i32) -> Self {
         Num(x)
     }
 
     /// Constructs a new `Num` type from an unsigned integer.
+    ///
+    /// # Errors
+    ///
+    /// An unsigned `Num` has a maximum value of 2^31 - 1, we error if `x` is greater than
+    /// the maximum value.
+    ///
+    /// # Examples
+    /// ```
+    /// use num::Num;
+    /// let x = 10;
+    /// // Roundtrips with `to_unsigned`.
+    /// assert_eq!(Num::from_unsigned(x)
+    ///                .expect("x is positive")
+    ///                .to_unsigned()
+    ///                .expect("roundtrips without error"),
+    ///            x
+    ///           );
+    /// ```
     pub fn from_unsigned(x: u32) -> Result<Self, Error> {
         if x <= i32::MAX as u32 {
             Ok(Num(x as i32))
