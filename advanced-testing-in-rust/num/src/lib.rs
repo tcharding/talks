@@ -134,4 +134,12 @@ mod tests {
         let abs = num.abs();
         assert_eq!(abs, -x as u32)
     }
+
+    #[test]
+    fn from_unsigned_i32_max() {
+        let x = i32::MAX as u32;
+        let n = Num::from_unsigned(x).expect("i32::MAX is within range");
+        let got = n.to_unsigned().expect("i32::MAX is positive");
+        assert_eq!(x, got)
+    }
 }
