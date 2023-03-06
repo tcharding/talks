@@ -72,6 +72,7 @@ impl Num {
     /// # Errors
     ///
     /// It is an error to call `to_unsigned` if this number is negative.
+    #[cfg_attr(all(test, mutate), mutate)]
     pub fn to_unsigned(self) -> Result<u32, Error> {
         if self.0 < 0 {
             return Err(Error::Negative);
@@ -80,10 +81,14 @@ impl Num {
     }
 
     /// Returns the absolute value of this number.
+    #[cfg_attr(all(test, mutate), mutate)]
     pub fn abs(self) -> u32 {
         let abs = if self.0 < 0 { 0 - self.0 } else { self.0 };
 
-        abs.try_into().expect("won't panic, int is positive")
+        match abs.try_into() {
+            Ok(u) => u,
+            Err(_) => unreachable!("abs is positive"),
+        }
     }
 }
 
@@ -143,6 +148,13 @@ mod tests {
     }
 
     #[test]
+    fn abs_handles_zero() {
+        let x: u32 = 0;
+        let n = Num::from_unsigned(x).expect("0 is within range");
+        assert_eq!(n.abs(), x)
+    }
+
+    #[test]
     fn from_unsigned_i32_max() {
         let x = i32::MAX as u32;
         let n = Num::from_unsigned(x).expect("i32::MAX is within range");
@@ -158,7 +170,15 @@ mod tests {
         match Num::from_unsigned(x) {
             Ok(_) => panic!("should have error for u32::MAX"),
             Err(Error::Overflow(got)) => assert_eq!(got, x),
-            Err(_) => panic!("unexpected error,")
+            Err(_) => panic!("unexpected error,"),
         }
+    }
+
+    #[test]
+    fn to_unsigned_zero() {
+        let x: u32 = 0;
+        let n = Num::from_unsigned(x).expect("0 is within range");
+        let got = n.to_unsigned().expect("0 is not negative");
+        assert_eq!(got, x)
     }
 }
