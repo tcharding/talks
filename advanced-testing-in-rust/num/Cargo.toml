@@ -4,3 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+
+[target.'cfg(mutate)'.dev-dependencies]
+mutagen = { git = "https://github.com/llogiq/mutagen" }

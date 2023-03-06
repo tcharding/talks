@@ -7,6 +7,9 @@
 
 use std::fmt;
 
+#[cfg(all(test, mutate))]
+use mutagen::mutate;
+
 /// A signed 32 bit integer type.
 pub struct Num(i32);
 
@@ -43,6 +46,7 @@ impl Num {
     ///            x
     ///           );
     /// ```
+    #[cfg_attr(all(test, mutate), mutate)]
     pub fn from_unsigned(x: u32) -> Result<Self, Error> {
         if x <= i32::MAX as u32 {
             Ok(Num(x as i32))
