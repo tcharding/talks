@@ -6,6 +6,8 @@
 //! Used to demonstrate testing methodology, the API and logic may at times be contrived.
 
 use std::fmt;
+use std::num::ParseIntError;
+use std::str::FromStr;
 
 #[cfg(all(test, mutate))]
 use mutagen::mutate;
@@ -13,6 +15,7 @@ use mutagen::mutate;
 /// A signed 32 bit integer type.
 ///
 /// `Num` is within the range [-2^31, 2^31 - 1]
+#[derive(Copy, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct Num(i32);
 
 impl Num {
@@ -105,6 +108,15 @@ impl TryFrom<u32> for Num {
     }
 }
 
+impl FromStr for Num {
+    type Err = ParseIntError;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        let x = i32::from_str(s)?;
+        Ok(Num::from_signed(x))
+    }
+}
+
 /// A `Num` related error.
 #[derive(Debug)]
 pub enum Error {
@@ -180,5 +192,19 @@ mod tests {
         let n = Num::from_unsigned(x).expect("0 is within range");
         let got = n.to_unsigned().expect("0 is not negative");
         assert_eq!(got, x)
+    }
+
+    #[test]
+    fn num_from_str_pos() {
+        let s = "10";
+        let want = Num(10);
+        let got = Num::from_str(s).expect("failed to parse string");
+        assert_eq!(got, want)
+    }
+
+    #[test]
+    fn num_from_str_neg() {
+        let s = "a";
+        assert!(Num::from_str(s).is_err())
     }
 }

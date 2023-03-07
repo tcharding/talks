@@ -10,3 +10,7 @@ Cargo.lock
 **/*.rs.bk
 
 mutants*
+
+# fuzzing artifacts
+hfuzz_target/
+hfuzz_workspace/
