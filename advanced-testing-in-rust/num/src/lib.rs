@@ -208,3 +208,18 @@ mod tests {
         assert!(Num::from_str(s).is_err())
     }
 }
+
+#[cfg(kani)]
+mod verification {
+    use super::*;
+
+    #[kani::proof]
+    fn abs() {
+        let x = kani::any::<i32>();
+        let n = Num::from_signed(x);
+
+        let want = x.unsigned_abs();
+        let got = n.abs();
+        assert_eq!(got, want);
+    }
+}
